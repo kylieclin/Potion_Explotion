@@ -1,0 +1,452 @@
+body {
+    margin:0;
+    font-family: 'Patua One', cursive;
+    font-size:0;
+}
+.game-page{
+    height:100vh;
+    width:100vw;
+}
+.game-area{
+    background-color:#db90b7;
+    height:75%;
+}
+.board-container{
+    position:relative;
+
+    height:100%;
+    width:60%;
+    display:inline-block;
+    background-color:#db90b7;
+    background-image: url('../../image/wooden.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    border-left: 5px solid #db90b7;
+    box-sizing: border-box;
+}
+.board{
+    position:relative;
+    left:10%;
+    top:2.5%;
+    height:95%;
+    width:80%;
+    display:flex;
+    flex-direction: column;
+}
+.board-row{
+    height:100%;
+    /* border:2px solid black; */
+    width:100%;
+    display:flex;
+    box-sizing: border-box;
+}
+.marble-container{
+    /* border:1px solid black; */
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+}
+.marble {
+    position:relative;
+    top:5%;
+    left:5%;
+    height:4vw;
+    background-color:white;
+    width:4vw;
+    border-radius:50%;
+
+}
+
+.hidden{
+    display:'none'
+}
+.action-container{
+    width:40%;
+    height:100%;
+    background-color:#db90b7;
+    background-image: url('../../image/collectbk.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.info{
+    font-size:1rem;
+    height:30%;
+    background-image: url('../../image/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5%;
+}
+.collector{
+    height:70%;
+    /* background-color:#db90b7;
+    background-image: url('../../image/collectbk.png');
+    background-size: cover;
+    background-repeat: no-repeat; */
+    /* background-position-x: 100%;
+    background-position-y: 5%; */
+    position: relative;
+}
+
+#rulesButton{
+    background-color:rgb(29, 147, 59, 0.9);
+    border-radius: 5px;
+    font-family: 'Patua One', cursive;
+    height:10%;
+    width:20%;
+    display:inline-block;
+    font-size:1.5rem;
+    color: #ccedda;
+    position: absolute;
+    right: 75%; 
+    top: 82%;
+}
+
+#close{
+    position:absolute;
+    top:3px;
+    right:2px;
+    width:26px;
+    height:24px;
+    background-color: rgb(29, 147, 59, 0.9);
+    border-radius:100%;
+    border: 2px solid darkgreen;
+    box-shadow: 4px 4px 4px green;
+    font-weight: bold;
+    color: #ccedda;
+    vertical-align: middle;
+}
+
+.hide{
+    display: none;
+}
+
+.popupContent h2{
+    margin-top: -18px;
+    text-align: center;
+    font-size: 2.5vh
+}
+
+h2>p{
+    margin-top:7px;
+    text-align: center;
+    color: burlywood; 
+    font-size: 2vh;
+}
+h1{
+    text-align: center;
+    font-size: 2.5vh;
+    margin-top: -7px;
+}
+h1>p{
+    color: maroon;
+    font-size: 2vh;
+    color: burlywood;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.popupContainer{
+    height:100%;
+    width:100%;
+    word-wrap: break-word;
+    font-size:1rem;
+    color: #ccedda;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-color: green;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: justify;
+    z-index: 1;
+}
+
+.popupContent{
+    font-size:1rem;
+    word-wrap: break-word;
+    color: #ccedda;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    position:absolute;
+    top:5%;
+    bottom:5%;
+    right:5%;
+    margin: -1% auto;
+    padding: 17px;
+    /* width:45%; */
+}
+
+.collector-box{
+    /* background-color:#c63d95; */
+
+    height: 80%;
+    width: 80%;
+    position: relative;
+    display: inline-block;
+    left: 10%;
+    border-radius: 10%;
+}
+/* .marbleimg{
+    position: relative;
+    left: 33%;
+} */
+
+.board-body,.action-container{
+    display:inline-block;
+    vertical-align:top;
+}
+
+.player-area{
+    background-color:#c63d95;
+    height:25%;
+}
+.player0-container,.player1-container{
+    width:50%;
+    height:100%;
+    display:inline-block;
+    border: 5px solid #db90b7;
+    box-sizing: border-box;
+}
+
+.player0-has,.player1-has{
+    width:40%;
+    position: relative;
+    height:100%;
+    display:inline-block;
+    vertical-align: top;
+}
+
+.potionContainer{
+    position: absolute;
+    top: 2%;
+    left: 16.66%;
+    width: 60%;
+    height:95%;
+    border-radius: 150px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 2px #30bb4e;
+}
+
+.potionContainer:hover, .marble:hover{
+    animation-name: shaking;
+    animation-duration: 400ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.potionslot{
+    padding-top: 10px;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    display: inline-block;
+    font-size: 3vh;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: relative;
+    text-align: center;
+    background-image: url('../../image/potion.png');
+    background-size: 14vh;
+    background-repeat: no-repeat;
+}
+
+.slotsleft{
+    width: 15%;
+    text-align: center;
+    color: rgb(255, 248, 248);
+    font-size: 3vh;
+    position: relative;
+    display: inline-block;
+    margin: auto;
+}
+.score{
+    width:60%;
+    height:100%;
+    display:inline-block;
+    vertical-align: top;
+    background-image: url('../../image/potion.png');
+    background-size: 12vh;
+    background-repeat: no-repeat;
+}
+
+.scoreA{
+    background-position-x: 5%;
+    background-position-y: 100%;
+}
+
+.scoreB{
+    background-position-x: 95%;
+    background-position-y: 100%;
+}
+
+.total-score{
+    height:20%;
+    width:100%;
+    display:inline-block;
+    font-size:1.5rem;
+    text-align: center;
+    color: #ccedda;
+    position: relative;
+}
+
+.playerText0 , .playerText1 {
+    visibility: visible;
+    background-color: rgba(77, 189, 105, 0.9);
+    border-radius: 10px;
+    width: 60%;
+    height: 35%;
+    font-size: 2.8vh;
+    text-align: center;
+    color: rgba(11, 43, 19, 0.9);
+    margin: auto;
+    position: relative;
+    top: 20%;
+    animation: colorchange 5s infinite;
+    -webkit-animation: colorchange 5s infinite;
+}
+
+
+
+.modal{
+    height:60%;
+    width:60%;
+    font-size:25px;
+    background-color: limegreen;
+    background-image: url('../../image/winimg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    
+}
+
+.modaltext{
+    font-size: 3rem;
+    color: rgb(29, 147, 59);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.hide{
+    display: none;
+}
+
+.marble, .collectedMarbles{
+    background: radial-gradient(circle at 50% 0px, rgb(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
+}
+
+.playerText{
+    background:  radial-gradient( circle at 10% 0px, rgb(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
+}
+
+.collectedMarbles{
+    border-radius: 50px;
+    height:50px;
+    width: 50px;
+    display: inline-block;
+    margin: 1px;
+}
+
+.divforposition{
+    height: 70%;
+    width: 80%;
+}
+
+.reset-button{
+    height: 10%;
+    width: 20%;
+    font-size: 2rem;
+    color: white;
+    font-family: 'Patua One', cursive;
+    background-color: rgb(29, 147, 59);
+    border: 2px solid #c63d95;
+}
+
+.playing{
+    background-color: rgb(29, 147, 59);
+    
+}
+
+.marbleanima{ 
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.potionContainer{
+    animation: pickme 2s infinite;
+    -webkit-animation: pickme 2s infinite;
+}
+
+.audio-control{
+    display: inline-block;
+    width: 50%;
+    height: 10%;
+    float: right;
+}
+/* 'crimson', 'Gold', 'DodgerBlue', 'DarkSlateGray' */
+@keyframes colorchange
+{
+  0%  {background-color: rgb(226, 53, 88);}
+  15% {background-color: Gold;}
+  30% {background-color: rgb(78, 162, 247);}
+  50% { background-color:  #cc62a7}
+  70% {background-color: rgb(78, 162, 247);}
+  85% {background-color: Gold;}
+  100%  {background-color: rgb(226, 53, 88);}
+}
+
+@keyframes pickme {
+    0%{box-shadow: -1px -1px 2px 2px #bba17b;}
+    50%{box-shadow: -1px -1px 2px 2px #7e5416;}
+    100%{box-shadow: -1px -1px 2px 2px #bba17b;}
+}
+@keyframes spin {
+    0% {
+        transform:rotate(0deg);
+        box-shadow: -1px -1px 2px 2px #bba17b;
+    }
+    50% {
+        transform:rotate(180deg);
+        box-shadow: -1px -1px 2px 2px #7e5416;
+    }
+    100% {
+        transform:rotate(360deg);
+        box-shadow: -1px -1px 2px 2px #bba17b;
+    }
+}
+
+@keyframes shaking {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media screen and (  max-width : 800px ){
+    .action-container{
+       display : none;
+    }
+    .board-container{
+        width: 100%;
+        border: none;
+    }
+    .playerText{
+        font-size: 1.8vh;
+    }
+}
+
+
+
