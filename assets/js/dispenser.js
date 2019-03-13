@@ -65,6 +65,7 @@ class Dispenser{
     }
     getRows(row){
         if(row){
+
             this.collectedMarbles =  row.collectedMarbles;
             this.playerCallback();
         }

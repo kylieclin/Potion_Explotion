@@ -1,15 +1,38 @@
 
 class Game{
-    constructor(potionData){
+    constructor(dataObj, domElement){
         // this.player = potionData.player; //temp
         // this.potionData = potionData;
         // this.playerpotions=[];
+        this.data = dataObj;
         this.dispenser = null;
         this.dispenserContainerDom=$('.board-container');
         this.totalRows = null;
-        // this.fillPotion = this.fillPotion.bind(this);
+        
+        this.players = [];
         this.reset = this.reset.bind(this);
         this.audio = new Audio('sound/clap.mp3');
+     
+        this.passCollectMarbles = this.passCollectMarbles.bind(this);   
+        this.callBacksForPlayer ={
+            returnMarbles: this.returnMarbles,
+            getMarbles: this.passCollectMarbles
+        }
+    }
+    createPlayer(){
+        for(var player = 0; player < this.data.player; player++){
+            var newPlayer = new Player(this.data, player, this.callBacksForPlayer);
+            newPlayer.generatePotion();
+            this.players.push(newPlayer);
+            console.log(this.players);
+        }
+    }
+    passCollectMarbles(player){
+        debugger;
+        this.players[player].getCollectMarbles(this.dispenser.collectedMarbles); //need to find player
+    }
+    returnMarbles(marbles){
+        this.dispenser.returnMarblesToRow(marbles);
     }
     
     // generatePotion(){
@@ -27,7 +50,7 @@ class Game{
         this.dispenser = new Dispenser(5, this.domForCollectMarbles);
         this.dispenserContainerDom.append(this.dispenser.render());
         this.dispenser.determineMarblesInRowAmount();
-        this.generatePotion();
+        this.createPlayer();
     }
     getGameRows(){
         this.totalRows =this.dispenser.getRows();
