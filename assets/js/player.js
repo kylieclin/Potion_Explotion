@@ -4,10 +4,12 @@ class Player{
         this.player = player;
         // this.potionData = potionData;
         this.playerpotions=[];
-        this.callBack = callBack;
+        
         this.collectMarbles = null;
+        // this.returnMarbles = this.returnMarbles.bind(this);
         this.fillPotion = this.fillPotion.bind(this);
         this.getPotion = this.getPotion.bind(this);
+        this.callBack = callBack;
     }
     generatePotion(){
         var newPotion = new Potion(this.data, this.player, this.getPotion);
@@ -19,34 +21,36 @@ class Player{
     fillPotion(potion){
         debugger;
         var marblesArr = this.collectMarbles;////////
-        var marbles = marblesArr.concat(); //copy the marbles array for slice
+        var marbles = []; //copy the marbles array for slice
+        var fill = false;
         for(var MIndex = 0; MIndex < marblesArr.length; MIndex++){ //check marbles
             for(var colorIndex =0; colorIndex < potion.color.length; colorIndex++){ //check colors
                 if(marblesArr[MIndex].marbleColor === potion.color[colorIndex] && potion.numbers[colorIndex] > 0){
-
                     potion.numbers[colorIndex] -=1;
                     potion.initialPotion[colorIndex] +=1;
-                    marbles.splice(MIndex, 1);
                     var textClass = '.' + potion.color[colorIndex] + potion.player;
                     $(textClass).text( potion.initialPotion[colorIndex]);
-                }
+                    fill = true;
+                    break;
+                } 
             }
+            if(fill === false){
+               marbles.push(marblesArr[MIndex]); 
+            }
+            fill = false;
         }
         // this.changePlayer(potion);
-        var checkFilled = potion.checkFilledStatus();
+        // var checkFilled = potion.checkFilledStatus();
         // this.checkWin(checkFilled);
-        this.returnMarbles(marbles) //the leftover marbles
+        this.callBack.returnMarbles(marbles); //the leftover marbles
     }
-    returnMarbles(marbles){
-        this.callBack(marbles);
-    }
-    getCollectMarbles(marbles){
-        debugger;
-        this.collectMarbles = marbles;
-    }
+    // getCollectMarbles(marbles){
+    //     debugger;
+    //     this.collectMarbles = marbles;
+    // }
     getPotion(potion){
         debugger;
-        this.callBack.getMarbles(potion.player);
+        this.collectMarbles = this.callBack.getMarbles(potion.player);
         this.fillPotion(potion);
     }
 }
