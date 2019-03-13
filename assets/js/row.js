@@ -19,6 +19,7 @@ class Row{
     }
 
     checkExplosion(marbleClicked){
+    
         var nextRightCheck = {position: null, Color: null};
         var nextLeftCheck = {position: null, Color: null};
         var keepChecking = false;

@@ -1,37 +1,52 @@
 class Player{
-    constructor(potionData){
-        this.player = potionData.player; //temp
-        this.potionData = potionData;
+    constructor(dataObj, player, callBack){
+        this.data = dataObj;
+        this.player = player;
+        // this.potionData = potionData;
         this.playerpotions=[];
+        this.callBack = callBack;
+        this.collectMarbles = null;
+        this.fillPotion = this.fillPotion.bind(this);
+        this.getPotion = this.getPotion.bind(this);
     }
     generatePotion(){
-        for(var player = 0; player < this.player; player++){
-        var newPotion = new Potion(this.potionData, player, this.fillPotion);
+        var newPotion = new Potion(this.data, this.player, this.getPotion);
         var potionNeedtoRender= newPotion.renderPotion();
         this.playerpotions.push(newPotion);
-        var playIndex = '.player'+ player+'-has';
+        var playIndex = '.player'+ this.player+'-has';
         $(playIndex).append(potionNeedtoRender);
-        }
-        this.selectPlay(); // randomly select
     }
     fillPotion(potion){
-        var marblesArr = this.dispenser.collectedMarbles;
+        debugger;
+        var marblesArr = this.collectMarbles;////////
         var marbles = marblesArr.concat(); //copy the marbles array for slice
         for(var MIndex = 0; MIndex < marblesArr.length; MIndex++){ //check marbles
             for(var colorIndex =0; colorIndex < potion.color.length; colorIndex++){ //check colors
                 if(marblesArr[MIndex].marbleColor === potion.color[colorIndex] && potion.numbers[colorIndex] > 0){
 
                     potion.numbers[colorIndex] -=1;
-                    potion.currentPotion[colorIndex] +=1;
+                    potion.initialPotion[colorIndex] +=1;
                     marbles.splice(MIndex, 1);
                     var textClass = '.' + potion.color[colorIndex] + potion.player;
-                    $(textClass).text( potion.currentPotion[colorIndex]);
+                    $(textClass).text( potion.initialPotion[colorIndex]);
                 }
             }
         }
-        this.changePlayer(potion);
+        // this.changePlayer(potion);
         var checkFilled = potion.checkFilledStatus();
-        this.checkWin(checkFilled);
-        this.dispenser.returnMarblesToRow(marbles); //the leftover marbles
+        // this.checkWin(checkFilled);
+        this.returnMarbles(marbles) //the leftover marbles
+    }
+    returnMarbles(marbles){
+        this.callBack(marbles);
+    }
+    getCollectMarbles(marbles){
+        debugger;
+        this.collectMarbles = marbles;
+    }
+    getPotion(potion){
+        debugger;
+        this.callBack.getMarbles(potion.player);
+        this.fillPotion(potion);
     }
 }
