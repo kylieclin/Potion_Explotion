@@ -3,6 +3,7 @@ class Player{
         this.data = dataObj;
         this.player = player;
         this.playerpotions=[]; 
+        this.oldMarbles = [];
         this.collectMarbles = null;
 //================== BIND ==================//
         this.fillPotion = this.fillPotion.bind(this);
@@ -25,6 +26,7 @@ class Player{
             for(var colorIndex =0; colorIndex < potion.color.length; colorIndex++){ //check colors
                 if(marblesArr[MIndex].marbleColor === potion.color[colorIndex] && potion.initialPotion[colorIndex] < potion.numbers[colorIndex]){
                     potion.initialPotion[colorIndex] +=1;
+                    this.oldMarbles.push(marblesArr[MIndex]);
                     var textClass = '.' + potion.color[colorIndex] + potion.player;
                     $(textClass).text( potion.initialPotion[colorIndex]);
                     fill = true;
@@ -37,11 +39,14 @@ class Player{
             }
             fill = false;
         }
+
         if(potion.checkFilledStatus()){
+            debugger;
             this.generatePotion();
             potion.dom.hide();
-            //hide existingpotion
-
+            for(var index in this.oldMarbles){
+                marbles.push(this.oldMarbles[index]);
+            }
             //badge ++
         }
         this.callBack.checkWin();
