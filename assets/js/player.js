@@ -19,7 +19,7 @@ class Player{
         $(playIndex).append(potionNeedtoRender);
     }
     fillPotion(potion){
-        debugger;
+        // debugger;
         var marblesArr = this.collectMarbles;////////
         var marbles = []; 
         var fill = false;
@@ -44,7 +44,7 @@ class Player{
         this.callBack.changePlayer(potion);
     }
     getPotion(potion){
-        debugger;
+        // debugger;
         this.collectMarbles = this.callBack.getMarbles(potion.player);
         this.fillPotion(potion);
     }
