@@ -2,11 +2,9 @@ class Player{
     constructor(dataObj, player, callBack){
         this.data = dataObj;
         this.player = player;
-        // this.potionData = potionData;
-        this.playerpotions=[];
-        
+        this.playerpotions=[]; 
         this.collectMarbles = null;
-        // this.returnMarbles = this.returnMarbles.bind(this);
+//================== BIND ==================//
         this.fillPotion = this.fillPotion.bind(this);
         this.getPotion = this.getPotion.bind(this);
         this.callBack = callBack;
@@ -20,7 +18,7 @@ class Player{
     }
     fillPotion(potion){
         // debugger;
-        var marblesArr = this.collectMarbles;////////
+        var marblesArr = this.collectMarbles;
         var marbles = []; 
         var fill = false;
         for(var MIndex = 0; MIndex < marblesArr.length; MIndex++){ //check marbles
