@@ -1,6 +1,6 @@
 
 class Game{
-    constructor(dataObj, domElement){
+    constructor(dataObj, domSelectors){
         // this.player = potionData.player; //temp
         // this.potionData = potionData;
         // this.playerpotions=[];
@@ -8,7 +8,7 @@ class Game{
         this.dispenser = null;
         this.dispenserContainerDom=$('.board-container');
         this.totalRows = null;
-        
+        this.domSelectors = domSelectors;
         this.players = [];
         this.reset = this.reset.bind(this);
         this.audio = new Audio('sound/clap.mp3');
@@ -56,41 +56,38 @@ class Game{
     }
     changePlayer(potion){
 debugger;
-        $('.player-area .playing').css('pointer-events', 'none');
         var player = potion.player;
-        var currentPlay = '.player'+player+'-container';
-        var currentText = '.playerText'+player;
+        // $(this.domSelectors.playing).off('click')
         if(player === 0){
-            var nextPlay = '.player1-container';
-            var nexttext = '.playerText1';
+            var currentPlay = $(this.domSelectors.player0.container);
+            var currentText = $(this.domSelectors.player0.guideText);
+            var nextPlay = $(this.domSelectors.player1.container);
+            var nexttext = $(this.domSelectors.player1.guideText);
         } else {
-            var nextPlay = '.player0-container';
-            var nexttext = '.playerText0';
+            var currentPlay = $(this.domSelectors.player1.container);
+            var currentText = $(this.domSelectors.player1.guideText);
+            var nextPlay = $(this.domSelectors.player0.container);
+            var nexttext = $(this.domSelectors.player0.guideText);
         }
-        $(currentText).css('visibility', 'hidden').text('Pick a marble to make explotion!');
-        $(nexttext).css('visibility', 'visible').text('Pick a marble to make explotion!');
-        $(currentPlay).css({
-                'opacity': '0.5'
-            }).toggleClass('playing');
-    
-        $(nextPlay).css({
-            'opacity': '1'
-        }).toggleClass('playing');
-        $('.marble').toggleClass('marbleanima');
-        $('.board-container').css('pointer-events', 'auto');
-        $('.collector-box').empty();
+        currentText.css('visibility', 'hidden').text(this.domSelectors.pickMarbleText);
+        nexttext.css('visibility', 'visible').text(this.domSelectors.pickMarbleText);
+        currentPlay.css('opacity','0.5').toggleClass(this.domSelectors.playing);
+        nextPlay.css('opacity','1').toggleClass(this.domSelectors.playing);
+        $(this.domSelectors.marbleClass).toggleClass(this.domSelectors.marbleAnimation);
+        // $(this.domSelectors.marbleClass).on('click', this);
+        $(this.domSelectors.collectBox).empty();
+        potionClicked= true;
+        marbleClicked = false;
     }
     selectPlay(){
         debugger;
         var nextplayer = Math.floor(Math.random()*this.data.player);
         var nextPlay = '.player'+nextplayer+'-container';
         $(nextPlay).css({
-            'opacity': '0.5',
-            'pointer-events': 'none'
+            'opacity': '0.5'
         }).toggleClass('playing');
         var text = '.playerText'+ nextplayer;
         $(text).css('visibility', 'hidden');
-        $('.player-area').css('pointer-events', 'none');
     }
     domForCollectMarbles(){
         var marblesArr = this.collectedMarbles;

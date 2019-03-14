@@ -14,12 +14,16 @@ class Marble{
         this.audio = new Audio('sound/bubbles.mp3')
     }
     handleClick(){
-        this.audio.play();
-        $('.board-container').css('pointer-events', 'none');
-        $('.marble').toggleClass('marbleanima');
-        $('.playerText').text('Click potion to collect marbles');
-        $('.player-area .playing').css('pointer-events', 'auto');
-        this.callbacks.click(this); 
+        debugger;
+        if(potionClicked === true){
+            this.audio.play();
+            $('.marble').toggleClass('marbleanima');
+            $('.playerText').text('Click potion to collect marbles');
+            marbleClicked = true;
+            potionClicked = false;
+            this.callbacks.click(this); 
+        }
+
     }
     getColor(){
         return this.marbleColor;
