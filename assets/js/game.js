@@ -42,6 +42,7 @@ class Game{
         this.dispenserContainerDom.append(this.dispenser.render());
         this.dispenser.determineMarblesInRowAmount();
         this.createPlayer();
+        this.selectPlay();
     }
     getGameRows(){
         this.totalRows =this.dispenser.getRows();
@@ -80,7 +81,8 @@ debugger;
         $('.collector-box').empty();
     }
     selectPlay(){
-        var nextplayer = Math.floor(Math.random()*this.player);
+        debugger;
+        var nextplayer = Math.floor(Math.random()*this.data.player);
         var nextPlay = '.player'+nextplayer+'-container';
         $(nextPlay).css({
             'opacity': '0.5',
