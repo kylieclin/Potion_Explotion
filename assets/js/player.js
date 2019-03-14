@@ -37,7 +37,14 @@ class Player{
             }
             fill = false;
         }
-        this.callBack.checkWin(potion.checkFilledStatus());
+        if(potion.checkFilledStatus()){
+            this.generatePotion();
+            potion.dom.hide();
+            //hide existingpotion
+
+            //badge ++
+        }
+        this.callBack.checkWin();
         this.callBack.returnMarbles(marbles); //the leftover marbles
         this.callBack.changePlayer(potion);
     }

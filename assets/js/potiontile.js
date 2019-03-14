@@ -42,6 +42,7 @@ class Potion{
             potionContainer.append(temp); 
             this.dom = potionContainer;
             copyColor.splice(pIndex, 1);
+            console.log(this.dom)
         };  
         return potionContainer;
     }

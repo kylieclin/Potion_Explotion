@@ -6,12 +6,15 @@ class Game{
         this.dispenser = null;
         this.totalRows = null;
         this.players = [];
-        this.reset = this.reset.bind(this);
         this.audio = new Audio('sound/clap.mp3');
+//================== BIND ==================//
+        this.reset = this.reset.bind(this);
         this.checkWin = this.checkWin.bind(this);
         this.passCollectMarbles = this.passCollectMarbles.bind(this);
         this.returnMarbles = this.returnMarbles.bind(this);  
-        this.changePlayer = this.changePlayer.bind(this); 
+        this.changePlayer = this.changePlayer.bind(this);
+        this.domForCollectMarbles = this.domForCollectMarbles.bind(this);
+//================== CALLBACKS ==================//
         this.callBacksForPlayer ={
             returnMarbles: this.returnMarbles,
             getMarbles: this.passCollectMarbles,
@@ -33,8 +36,9 @@ class Game{
         this.dispenser.returnMarblesToRow(marbles);
     }
     createGameBoard(){
+        debugger;
         this.dispenser = new Dispenser(5, this.domForCollectMarbles);
-        this.domSelectors.gameBoard.append(this.dispenser.render());
+        $(this.domSelectors.gameBoard).append(this.dispenser.render());
         this.dispenser.determineMarblesInRowAmount();
         this.createPlayer();
         this.selectPlay();
@@ -80,7 +84,8 @@ class Game{
         }
     }
     domForCollectMarbles(){
-        var marblesArr = this.collectedMarbles;
+        debugger;
+        var marblesArr = this.dispenser.collectedMarbles;
         for(var colorIndex = 0 ; colorIndex < marblesArr.length; colorIndex++){
             var colorDiv = $('<div>',{
                 css:{
