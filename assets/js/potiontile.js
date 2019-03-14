@@ -44,14 +44,16 @@ class Potion{
         };  
         return potionContainer;
     }
-    checkFilledStatus(){
-        var potionNum= this.numbers;
-        var filled= true;
-        for(var numIndex=0; numIndex < potionNum.length; numIndex++){
-            if(potionNum[numIndex] != 0){
-                filled = false;
-                return filled;
+    checkFilledStatus(){ //need to change
+        var filled= false;
+        var fullpotion = 0;
+        for(var numIndex=0; numIndex < this.numbers.length; numIndex++){
+            if(this.numbers[numIndex] === this.initialPotion[numIndex]){
+                fullpotion++;
             }
+        }
+        if(fullpotion === this.colorsInOnePotion){
+            filled = true;
         }
         return filled;
     }

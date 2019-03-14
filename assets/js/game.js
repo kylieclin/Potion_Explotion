@@ -12,12 +12,15 @@ class Game{
         this.players = [];
         this.reset = this.reset.bind(this);
         this.audio = new Audio('sound/clap.mp3');
-     
+        this.checkWin = this.checkWin.bind(this);
         this.passCollectMarbles = this.passCollectMarbles.bind(this);
-        this.returnMarbles = this.returnMarbles.bind(this);   
+        this.returnMarbles = this.returnMarbles.bind(this);  
+        this.changePlayer = this.changePlayer.bind(this); 
         this.callBacksForPlayer ={
             returnMarbles: this.returnMarbles,
-            getMarbles: this.passCollectMarbles
+            getMarbles: this.passCollectMarbles,
+            checkWin: this.checkWin,
+            changePlayer: this.changePlayer
         }
     }
     createPlayer(){
@@ -45,12 +48,13 @@ class Game{
     }
     checkWin(checkFilled){
         if(checkFilled){
-            $('#modal').toggleClass('hide');
-            this.audio.play();
+            // $('#modal').toggleClass('hide');
+            // this.audio.play();
+            console.log('win');
         }
     }
     changePlayer(potion){
-
+debugger;
         $('.player-area .playing').css('pointer-events', 'none');
         var player = potion.player;
         var currentPlay = '.player'+player+'-container';
