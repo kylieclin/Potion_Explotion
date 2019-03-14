@@ -7,7 +7,7 @@ var newGame;
 var gameData ={
     color: ['crimson', 'Gold', 'DodgerBlue', 'DarkSlateGray'],
     colorsInOnePotion: 3,
-    setToFill: 4,
+    setToFill: 2,
     player: 2
 }
 
@@ -36,8 +36,6 @@ function startApp(){
     newGame.getGameRows();
     newGame.addEventListener(); 
     $('.button').click(showHideModal);
-    
-    
 }
 
 function showHideModal(){
