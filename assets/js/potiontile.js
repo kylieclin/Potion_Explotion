@@ -1,9 +1,9 @@
 class Potion{
     constructor(data, player, callback){
-        this.initialPotion = [0,0,0,0];
         this.dataColor = data.color;
         this.setToFill = data.setToFill;
         this.colorsInOnePotion = data.colorsInOnePotion;
+        this.initialPotion = [0,0,0,0];
         this.numbers= [];
         this.color=[];
         this.dom = [];
@@ -11,6 +11,7 @@ class Potion{
         this.callback = {
             click: callback
         }
+//================== BIND ==================//
         this.renderPotion = this.renderPotion.bind(this);
         this.fillPotionClick = this.fillPotionClick.bind(this);
     }
@@ -27,11 +28,11 @@ class Potion{
                 'class': 'potionslot'
             })
             var tempText = $('<p>',{ //text for change default 0
-                'class': 'slotsleft ' + copyColor[pIndex] + this.player,
+                'class': 'slotsText ' + copyColor[pIndex] + this.player,
                 'text': this.initialPotion[pIndex]
             })
             var fixedText = $('<p>',{ //text for numbers of target marbles
-                'class': 'slotsleft ',
+                'class': 'slotsText ',
                 'text': '/'+ randomnum
             })
             
@@ -59,8 +60,10 @@ class Potion{
     }
     fillPotionClick(){
         debugger;
-        if(marbleClicked === true){
+        if(marbleClicked){
             this.callback.click(this);
+            potionClicked= true;
+            marbleClicked = false;
         }
     }
 

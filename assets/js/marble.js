@@ -15,7 +15,7 @@ class Marble{
     }
     handleClick(){
         debugger;
-        if(potionClicked === true){
+        if(potionClicked){
             this.audio.play();
             $('.marble').toggleClass('marbleanima');
             $('.playerText').text('Click potion to collect marbles');

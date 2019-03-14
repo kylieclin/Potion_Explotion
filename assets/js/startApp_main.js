@@ -34,8 +34,9 @@ function startApp(){
     newGame = new Game(gameData, domSelectors);
     newGame.createGameBoard();
     newGame.getGameRows();
-    $('.button').click(showHideModal);
     newGame.addEventListener(); 
+    $('.button').click(showHideModal);
+    
     
 }
 

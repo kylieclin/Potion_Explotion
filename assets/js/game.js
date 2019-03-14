@@ -1,14 +1,10 @@
 
 class Game{
     constructor(dataObj, domSelectors){
-        // this.player = potionData.player; //temp
-        // this.potionData = potionData;
-        // this.playerpotions=[];
-        this.data = dataObj;
-        this.dispenser = null;
-        this.dispenserContainerDom=$('.board-container');
-        this.totalRows = null;
+        this.data = dataObj;        
         this.domSelectors = domSelectors;
+        this.dispenser = null;
+        this.totalRows = null;
         this.players = [];
         this.reset = this.reset.bind(this);
         this.audio = new Audio('sound/clap.mp3');
@@ -28,7 +24,6 @@ class Game{
             var newPlayer = new Player(this.data, player, this.callBacksForPlayer);
             newPlayer.generatePotion();
             this.players.push(newPlayer);
-            console.log(this.players);
         }
     }
     passCollectMarbles(){
@@ -39,7 +34,7 @@ class Game{
     }
     createGameBoard(){
         this.dispenser = new Dispenser(5, this.domForCollectMarbles);
-        this.dispenserContainerDom.append(this.dispenser.render());
+        this.domSelectors.gameBoard.append(this.dispenser.render());
         this.dispenser.determineMarblesInRowAmount();
         this.createPlayer();
         this.selectPlay();
@@ -52,13 +47,11 @@ class Game{
             // $('#modal').toggleClass('hide');
             // this.audio.play();
             console.log('win');
+            alert('win');
         }
     }
     changePlayer(potion){
-debugger;
-        var player = potion.player;
-        // $(this.domSelectors.playing).off('click')
-        if(player === 0){
+        if(potion.player === 0){
             var currentPlay = $(this.domSelectors.player0.container);
             var currentText = $(this.domSelectors.player0.guideText);
             var nextPlay = $(this.domSelectors.player1.container);
@@ -69,25 +62,22 @@ debugger;
             var nextPlay = $(this.domSelectors.player0.container);
             var nexttext = $(this.domSelectors.player0.guideText);
         }
-        currentText.css('visibility', 'hidden').text(this.domSelectors.pickMarbleText);
-        nexttext.css('visibility', 'visible').text(this.domSelectors.pickMarbleText);
-        currentPlay.css('opacity','0.5').toggleClass(this.domSelectors.playing);
-        nextPlay.css('opacity','1').toggleClass(this.domSelectors.playing);
+        currentText.hide().text(this.domSelectors.pickMarbleText);
+        nexttext.show('slow').text(this.domSelectors.pickMarbleText);
+        currentPlay.fadeTo('slow','0.5').toggleClass(this.domSelectors.playing);
+        nextPlay.fadeTo('slow','1').toggleClass(this.domSelectors.playing);
         $(this.domSelectors.marbleClass).toggleClass(this.domSelectors.marbleAnimation);
-        // $(this.domSelectors.marbleClass).on('click', this);
         $(this.domSelectors.collectBox).empty();
-        potionClicked= true;
-        marbleClicked = false;
     }
     selectPlay(){
-        debugger;
         var nextplayer = Math.floor(Math.random()*this.data.player);
-        var nextPlay = '.player'+nextplayer+'-container';
-        $(nextPlay).css({
-            'opacity': '0.5'
-        }).toggleClass('playing');
-        var text = '.playerText'+ nextplayer;
-        $(text).css('visibility', 'hidden');
+        if(nextplayer === 0){
+            $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass('playing');
+            $(this.domSelectors.player1.guideText).hide();
+        } else {
+            $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass('playing');
+            $(this.domSelectors.player0.guideText).hide();
+        }
     }
     domForCollectMarbles(){
         var marblesArr = this.collectedMarbles;
@@ -98,7 +88,7 @@ debugger;
                 },
                 class: 'collectedMarbles'
             })
-            $('.collector-box').append(colorDiv);
+            $(this.domSelectors.collectBox).append(colorDiv);
         }
     }
     addEventListener(){
