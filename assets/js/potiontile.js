@@ -1,6 +1,6 @@
 class Potion{
     constructor(data, player, callback){
-        this.initialPotion = data.initial;
+        this.initialPotion = [0,0,0,0];
         this.dataColor = data.color;
         this.setToFill = data.setToFill;
         this.colorsInOnePotion = data.colorsInOnePotion;
@@ -44,7 +44,7 @@ class Potion{
         };  
         return potionContainer;
     }
-    checkFilledStatus(){ //need to change
+    checkFilledStatus(){
         var filled= false;
         var fullpotion = 0;
         for(var numIndex=0; numIndex < this.numbers.length; numIndex++){
