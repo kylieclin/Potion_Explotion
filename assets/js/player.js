@@ -39,15 +39,11 @@ class Player{
             }
             fill = false;
         }
-        // this.changePlayer(potion);
         // var checkFilled = potion.checkFilledStatus();
-        // this.checkWin(checkFilled);
+        this.callBack.checkWin(potion.checkFilledStatus());
         this.callBack.returnMarbles(marbles); //the leftover marbles
+        this.callBack.changePlayer(potion);
     }
-    // getCollectMarbles(marbles){
-    //     debugger;
-    //     this.collectMarbles = marbles;
-    // }
     getPotion(potion){
         debugger;
         this.collectMarbles = this.callBack.getMarbles(potion.player);
