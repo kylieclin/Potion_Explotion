@@ -34,7 +34,7 @@ class Potion{
             })
             var fixedText = $('<p>',{ //text for numbers of target marbles
                 'class': 'slotsText ',
-                'text': '/'+ randomnum
+                'text': '/ '+ randomnum
             })
             
             this.numbers.push(randomnum);
