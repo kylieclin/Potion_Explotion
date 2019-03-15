@@ -14,12 +14,14 @@ class Game{
         this.returnMarbles = this.returnMarbles.bind(this);  
         this.changePlayer = this.changePlayer.bind(this);
         this.domForCollectMarbles = this.domForCollectMarbles.bind(this);
+        this.addBadge = this.addBadge.bind(this);
 //================== CALLBACKS ==================//
         this.callBacksForPlayer ={
             returnMarbles: this.returnMarbles,
             getMarbles: this.passCollectMarbles,
             checkWin: this.checkWin,
-            changePlayer: this.changePlayer
+            changePlayer: this.changePlayer,
+            addBadge: this.addBadge
         }
     }
     createPlayer(){
@@ -46,12 +48,21 @@ class Game{
     getGameRows(){
         this.totalRows =this.dispenser.getRows();
     }
-    checkWin(checkFilled){
-        if(checkFilled){
-            // $('#modal').toggleClass('hide');
-            // this.audio.play();
+    addBadge(player){
+        var badge = $('<img>').attr('src', 'image/badge.png').addClass('badge')
+        if(player === 0){
+            $(this.domSelectors.scoreA).append(badge);
+        } else {
+            $(this.domSelectors.scoreB).append(badge);
+        }
+        
+    }
+    checkWin(score){
+        if(score === 2){
+            $('#modal').toggleClass('hide');
+            this.audio.play();
             console.log('win');
-            alert('win');
+
         }
     }
     changePlayer(potion){
@@ -76,10 +87,10 @@ class Game{
     selectPlay(){
         var nextplayer = Math.floor(Math.random()*this.data.player);
         if(nextplayer === 0){
-            $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass('playing');
+            $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
             $(this.domSelectors.player1.guideText).hide();
         } else {
-            $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass('playing');
+            $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
             $(this.domSelectors.player0.guideText).hide();
         }
     }

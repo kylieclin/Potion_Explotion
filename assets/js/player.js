@@ -3,7 +3,9 @@ class Player{
         this.data = dataObj;
         this.player = player;
         this.playerpotions=[]; 
+        this.oldMarbles = [];
         this.collectMarbles = null;
+        this.score = 0;
 //================== BIND ==================//
         this.fillPotion = this.fillPotion.bind(this);
         this.getPotion = this.getPotion.bind(this);
@@ -25,6 +27,7 @@ class Player{
             for(var colorIndex =0; colorIndex < potion.color.length; colorIndex++){ //check colors
                 if(marblesArr[MIndex].marbleColor === potion.color[colorIndex] && potion.initialPotion[colorIndex] < potion.numbers[colorIndex]){
                     potion.initialPotion[colorIndex] +=1;
+                    this.oldMarbles.push(marblesArr[MIndex]);
                     var textClass = '.' + potion.color[colorIndex] + potion.player;
                     $(textClass).text( potion.initialPotion[colorIndex]);
                     fill = true;
@@ -37,15 +40,18 @@ class Player{
             }
             fill = false;
         }
-        if(potion.checkFilledStatus()){
-            this.generatePotion();
-            potion.dom.hide();
-            //hide existingpotion
 
-            //badge ++
+        if(potion.checkFilledStatus()){
+            debugger;
+            this.generatePotion();
+            potion.dom.hide('slow');
+            for(var index in this.oldMarbles){
+                marbles.push(this.oldMarbles[index]);
+            }
+            this.callBack.addBadge(this.player);
+            this.score++
         }
-        console.log('unused/returned marbles',marbles)
-        this.callBack.checkWin();
+        this.callBack.checkWin(this.score);
         this.callBack.returnMarbles(marbles); //the leftover marbles
         this.callBack.changePlayer(potion);
     }

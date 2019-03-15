@@ -17,7 +17,8 @@ class Potion{
     }
     renderPotion(){
         var copyColor = this.dataColor.concat();
-        var potionContainer=$('<div>').addClass('potionContainer').click(this.fillPotionClick);
+        var container = 'potionContainer' + this.player;
+        var potionContainer=$('<div>').addClass(container).click(this.fillPotionClick);
         for(var potioncontent = 0; potioncontent < this.colorsInOnePotion; potioncontent++){
             var randomnum = Math.floor(Math.random()* this.setToFill + 2);
             var pIndex = Math.floor(Math.random()*copyColor.length);

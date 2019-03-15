@@ -21,13 +21,15 @@ var domSelectors ={
         guideText: '.playerText1'
 
     },
-    playing: '.playing',
+    playing: 'playing',
     pickMarbleText: 'Pick a marble to make explotion!',
     marbleClass: '.marble',
     marbleAnimation: 'marbleanima',
     gameBoard: '.board-container',
     collectBox: '.collector-box',
-    resetBtn: '.reset-button'
+    resetBtn: '.reset-button',
+    scoreA: '.scoreA',
+    scoreB: '.scoreB'
 }
 
 function startApp(){
