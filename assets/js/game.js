@@ -59,17 +59,16 @@ class Game{
     addBadge(player){
         var badge = $('<img>').attr('src', 'image/badge.png').addClass('badge')
         if(player === 0){
-            $(this.domSelectors.scoreA).append(badge);
+            $(this.domSelectors.scoreA).find('.badgeimg').append(badge);
         } else {
-            $(this.domSelectors.scoreB).append(badge);
+            $(this.domSelectors.scoreB).find('.badgeimg').append(badge);
         }
     }
     checkWin(score){
-        if(score === 2){
+        if(score === this.data.winGame){
             $('#modal').toggleClass('hide');
             this.audio.play();
             console.log('win');
-
         }
     }
     changePlayer(potion){
@@ -86,8 +85,9 @@ class Game{
             var nexttext = $(this.domSelectors.player0.guideText);
             this.playing = 0;
         }
-        currentText.hide().text(this.domSelectors.pickMarbleText);
-        nexttext.show('slow').text(this.domSelectors.pickMarbleText);
+        $(this.domSelectors.playerText).text(this.domSelectors.pickMarbleText);
+        currentText.css('visibility', 'hidden');
+        nexttext.css('visibility', 'visible');
         currentPlay.fadeTo('slow','0.5').toggleClass(this.domSelectors.playing);
         nextPlay.fadeTo('slow','1').toggleClass(this.domSelectors.playing);
         $(this.domSelectors.marbleClass).toggleClass(this.domSelectors.marbleAnimation);
@@ -98,11 +98,11 @@ class Game{
         var nextplayer = Math.floor(Math.random()*this.data.player);
         if(nextplayer === 0){
             $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
-            $(this.domSelectors.player0.guideText).hide();
+            $(this.domSelectors.player0.guideText).css('visibility', 'hidden');
             this.playing = 1;
         } else {
             $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
-            $(this.domSelectors.player1.guideText).hide();
+            $(this.domSelectors.player1.guideText).css('visibility', 'hidden');
             this.playing = 0;
         }
     }

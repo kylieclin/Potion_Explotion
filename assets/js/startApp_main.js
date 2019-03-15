@@ -7,20 +7,22 @@ var newGame;
 var gameData ={
     color: ['crimson', 'Gold', 'DodgerBlue', 'DarkSlateGray'],
     colorsInOnePotion: 3,
-    setToFill: 2,
-    player: 2
+    setToFill: 1,
+    player: 2,
+    winGame: 3
 }
 
 var domSelectors ={
     player0 :{
         container: '.player0-container',
-        guideText: '.playerText0'
+        guideText: '.guideBox0'
     },
     player1: {
         container: '.player1-container',
-        guideText: '.playerText1'
+        guideText: '.guideBox1'
 
     },
+    playerText: '.playerText',
     playing: 'playing',
     pickMarbleText: 'Pick a marble to make explotion!',
     marbleClass: '.marble',
