@@ -5,6 +5,7 @@ class Player{
         this.playerpotions=[]; 
         this.oldMarbles = [];
         this.collectMarbles = null;
+        this.score = 0;
 //================== BIND ==================//
         this.fillPotion = this.fillPotion.bind(this);
         this.getPotion = this.getPotion.bind(this);
@@ -43,13 +44,14 @@ class Player{
         if(potion.checkFilledStatus()){
             debugger;
             this.generatePotion();
-            potion.dom.hide();
+            potion.dom.hide('slow');
             for(var index in this.oldMarbles){
                 marbles.push(this.oldMarbles[index]);
             }
-            //badge ++
+            this.callBack.addBadge(this.player);
+            this.score++
         }
-        this.callBack.checkWin();
+        this.callBack.checkWin(this.score);
         this.callBack.returnMarbles(marbles); //the leftover marbles
         this.callBack.changePlayer(potion);
     }
