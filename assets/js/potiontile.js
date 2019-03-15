@@ -61,11 +61,8 @@ class Potion{
         return filled;
     }
     fillPotionClick(){
-        debugger;
         if(marbleClicked){
             this.callback.click(this);
-            potionClicked= true;
-            marbleClicked = false;
         }
     }
 

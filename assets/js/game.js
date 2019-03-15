@@ -6,6 +6,7 @@ class Game{
         this.dispenser = null;
         this.totalRows = null;
         this.players = [];
+        this.playing = null;
         this.audio = new Audio('sound/clap.mp3');
 //================== BIND ==================//
         this.reset = this.reset.bind(this);
@@ -31,8 +32,15 @@ class Game{
             this.players.push(newPlayer);
         }
     }
-    passCollectMarbles(){
-        return this.dispenser.collectedMarbles;
+    passCollectMarbles(player){
+        debugger;
+        if(player === this.playing){
+            potionClicked= true;
+            marbleClicked = false;
+            return this.dispenser.collectedMarbles;
+        } else {
+            console.log('its not your turn!');
+        }
     }
     returnMarbles(marbles){
         this.dispenser.returnMarblesToRow(marbles);
@@ -55,7 +63,6 @@ class Game{
         } else {
             $(this.domSelectors.scoreB).append(badge);
         }
-        
     }
     checkWin(score){
         if(score === 2){
@@ -71,11 +78,13 @@ class Game{
             var currentText = $(this.domSelectors.player0.guideText);
             var nextPlay = $(this.domSelectors.player1.container);
             var nexttext = $(this.domSelectors.player1.guideText);
+            this.playing = 1;
         } else {
             var currentPlay = $(this.domSelectors.player1.container);
             var currentText = $(this.domSelectors.player1.guideText);
             var nextPlay = $(this.domSelectors.player0.container);
             var nexttext = $(this.domSelectors.player0.guideText);
+            this.playing = 0;
         }
         currentText.hide().text(this.domSelectors.pickMarbleText);
         nexttext.show('slow').text(this.domSelectors.pickMarbleText);
@@ -85,13 +94,16 @@ class Game{
         $(this.domSelectors.collectBox).empty();
     }
     selectPlay(){
+        debugger;
         var nextplayer = Math.floor(Math.random()*this.data.player);
         if(nextplayer === 0){
-            $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
-            $(this.domSelectors.player1.guideText).hide();
-        } else {
             $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
             $(this.domSelectors.player0.guideText).hide();
+            this.playing = 1;
+        } else {
+            $(this.domSelectors.player1.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
+            $(this.domSelectors.player1.guideText).hide();
+            this.playing = 0;
         }
     }
     domForCollectMarbles(){
