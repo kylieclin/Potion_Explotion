@@ -36,7 +36,7 @@ class Player{
             }
             console.log(potion.initialPotion);
             if(fill === false){
-               marbles.push(marblesArr[MIndex]); 
+                marbles.push(marblesArr[MIndex]); 
             }
             fill = false;
         }

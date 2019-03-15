@@ -42,6 +42,7 @@ class Dispenser{
             var currentMarble = objArray[iterations];
             this.possibleColorsLeft.push(currentMarble.marbleColor);
         }
+        console.log('marbles returned to dispenser',this.possibleColorsLeft);
         this.addMarbleToRow();
     }
 
