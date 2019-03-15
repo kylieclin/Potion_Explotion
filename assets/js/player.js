@@ -6,10 +6,10 @@ class Player{
         this.oldMarbles = [];
         this.collectMarbles = null;
         this.score = 0;
+        this.callBack = callBack;
 //================== BIND ==================//
         this.fillPotion = this.fillPotion.bind(this);
         this.getPotion = this.getPotion.bind(this);
-        this.callBack = callBack;
     }
     generatePotion(){
         var newPotion = new Potion(this.data, this.player, this.getPotion);
@@ -56,8 +56,9 @@ class Player{
         this.callBack.changePlayer(potion);
     }
     getPotion(potion){
-        // debugger;
         this.collectMarbles = this.callBack.getMarbles(potion.player);
-        this.fillPotion(potion);
+        if(this.collectMarbles){
+             this.fillPotion(potion);
+        }
     }
 }
