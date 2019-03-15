@@ -33,7 +33,7 @@ class Player{
             }
             console.log(potion.initialPotion);
             if(fill === false){
-               marbles.push(marblesArr[MIndex]); 
+                marbles.push(marblesArr[MIndex]); 
             }
             fill = false;
         }
@@ -44,6 +44,7 @@ class Player{
 
             //badge ++
         }
+        console.log('unused/returned marbles',marbles)
         this.callBack.checkWin();
         this.callBack.returnMarbles(marbles); //the leftover marbles
         this.callBack.changePlayer(potion);

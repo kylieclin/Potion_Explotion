@@ -42,7 +42,6 @@ class Potion{
             potionContainer.append(temp); 
             this.dom = potionContainer;
             copyColor.splice(pIndex, 1);
-            console.log(this.dom)
         };  
         return potionContainer;
     }
@@ -63,7 +62,7 @@ class Potion{
         debugger;
         if(marbleClicked){
             this.callback.click(this);
-            potionClicked= true;
+            potionClicked = true;
             marbleClicked = false;
         }
     }

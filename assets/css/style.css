@@ -36,7 +36,6 @@ body {
 }
 .board-row{
     height:100%;
-    /* border:2px solid black; */
     width:100%;
     display:flex;
     box-sizing: border-box;
@@ -44,7 +43,7 @@ body {
 .marble-container{
     /* border:1px solid black; */
     height:100%;
-    width:100%;
+    width:11.11%;
     box-sizing: border-box;
 }
 .marble {

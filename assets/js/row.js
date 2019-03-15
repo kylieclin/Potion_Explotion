@@ -105,9 +105,8 @@ class Row{
                     nextRightCheck.color = this.marblesInRow[nextRightCheck.position].marbleColor;
                 }
             };
-            
         }
-
+        console.log('collected marbles',this.collectedMarbles);
         this.removeMarbles();
         this.callbacks.getRows(this);
         if (this.marblesInRow.length>9){
@@ -117,22 +116,9 @@ class Row{
 
     createMarbles(marbleColor,rowIndex){//if something is passed in..create one new marble and append to row
         if (marbleColor){
-            if (this.marblesInRow.length<9){
-                $(`.row${rowIndex}>.empty`).remove();
-                var newMarble = new Marble(marbleColor,this.checkExplosion);
-                this.domElements.row.append(newMarble.render());
-                this.marblesInRow.push(newMarble);
-                for (var start = 0; start<9-this.marblesInRow.length;start++){
-                    var emptyContainer = $("<div>",{
-                        'class': 'marble-container empty'
-                    });
-                    this.domElements.row.append(emptyContainer);
-                }
-            } else {
-                var newMarble = new Marble(marbleColor,this.checkExplosion);
-                this.domElements.row.append(newMarble.render());
-                this.marblesInRow.push(newMarble);
-            }
+            var newMarble = new Marble(marbleColor,this.checkExplosion);
+            this.domElements.row.append(newMarble.render());
+            this.marblesInRow.push(newMarble);
         } else {
             for (var marbleIndex = 0;marbleIndex<this.marbleColors.length; marbleIndex++){
                 var newMarble = new Marble(this.marbleColors[marbleIndex],this.checkExplosion);
@@ -141,7 +127,7 @@ class Row{
                 this.marblesInRow.push(newMarble);
             }
         }
-        this.hideMarbles();
+    this.hideMarbles();
     }
     hideMarbles(){
         for (var marbleIndex=9;marbleIndex<this.marblesInRow.length;marbleIndex++){
@@ -149,24 +135,22 @@ class Row{
         }
     }
     showMarble(){
-        if (this.hiddenMarblePosition>this.marblesInRow.length-1){
-            var emptyContainer = $("<div>",{
-                'class': 'marble-container empty'
-            });
-            this.domElements.row.append(emptyContainer);
-        } else {
-            this.marblesInRow[this.hiddenMarblePosition].domElements.container.show();
+        if(this.marblesInRow.length>9 && this.marblesInRow[this.hiddenMarblePosition]){
+            this.marblesInRow[this.hiddenMarblePosition].domElements.container.show('slow');
             this.hiddenMarblePosition++
+        } else {
+            return;
         }
     }
     removeMarbles() {
+        console.log('before removal this row has ',this.marblesInRow.length);
         for (var marbleIndex in this.collectedMarbles){
             var currentMarble = this.collectedMarbles[marbleIndex];
             var marbleIndexRemoval =this.marblesInRow.indexOf(currentMarble);
             currentMarble.domElements.container.remove();
             this.marblesInRow.splice(marbleIndexRemoval,1);
-            
         }
+        console.log('after removal this row has ',this.marblesInRow.length)
     }
     render(){
         this.domElements.row = $('<div>',{
