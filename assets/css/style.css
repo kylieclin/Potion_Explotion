@@ -41,7 +41,6 @@ body {
     box-sizing: border-box;
 }
 .marble-container{
-    /* border:1px solid black; */
     height:100%;
     width:11.11%;
     box-sizing: border-box;
@@ -79,12 +78,6 @@ body {
 }
 .collector{
     height:70%;
-    /* background-color:#db90b7;
-    background-image: url('../../image/collectbk.png');
-    background-size: cover;
-    background-repeat: no-repeat; */
-    /* background-position-x: 100%;
-    background-position-y: 5%; */
     position: relative;
 }
 
@@ -175,12 +168,9 @@ h1>p{
     right:5%;
     margin: -1% auto;
     padding: 17px;
-    /* width:45%; */
 }
 
 .collector-box{
-    /* background-color:#c63d95; */
-
     height: 65%;
     width: 80%;
     position: relative;
@@ -188,10 +178,6 @@ h1>p{
     left: 10%;
     border-radius: 10%;
 }
-/* .marbleimg{
-    position: relative;
-    left: 33%;
-} */
 
 .board-body,.action-container{
     display:inline-block;
@@ -239,10 +225,8 @@ h1>p{
 }
 
 .potionContainer0:hover, .potionContainer1:hover, .marble:hover{
-    animation-name: shaking;
-    animation-duration: 400ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: shaking 400ms infinite;
+    -webkit-animation: shaking 400ms infinite;
 }
 
 .potionslot{
@@ -254,11 +238,7 @@ h1>p{
     font-size: 3vh;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     position: relative;
-    text-align: center;
-    /* background-image: url('../../image/potion.png');
-    background-size: 14vh;
-    background-repeat: no-repeat; */
-    
+    text-align: center;   
 }
 
 .slotsText{
@@ -329,8 +309,6 @@ h1>p{
     top: 20%;
 }
 
-
-
 .modal{
     height:60%;
     width:60%;
@@ -343,8 +321,7 @@ h1>p{
     top:50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    text-align: center;
-    
+    text-align: center; 
 }
 
 .modaltext{
@@ -359,9 +336,6 @@ h1>p{
 
 .marble, .collectedMarbles{
     background: radial-gradient(circle at 50% 0px, rgb(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
-}
-
-.playerText{
 }
 
 .collectedMarbles{
@@ -392,24 +366,11 @@ h1>p{
     
 }
 
-.marbleanima{ 
-    animation-name: spin;
-    animation-duration: 4000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.potionContainer{
+.potionContainer, .marbleanima{
     animation: pickme 2s infinite;
     -webkit-animation: pickme 2s infinite;
 }
 
-.audio-control{
-    display: inline-block;
-    width: 50%;
-    height: 10%;
-    float: right;
-}
 /* 'crimson', 'Gold', 'DodgerBlue', 'DarkSlateGray' */
 @keyframes colorchange
 {
@@ -426,20 +387,6 @@ h1>p{
     0%{box-shadow: -1px -1px 2px 2px #bba17b;}
     50%{box-shadow: -1px -1px 2px 2px #7e5416;}
     100%{box-shadow: -1px -1px 2px 2px #bba17b;}
-}
-@keyframes spin {
-    0% {
-        /* transform:rotate(0deg); */
-        box-shadow: -1px -1px 2px 2px #bba17b;
-    }
-    50% {
-        /* transform:rotate(180deg); */
-        box-shadow: -1px -1px 2px 2px #7e5416;
-    }
-    100% {
-        /* transform:rotate(360deg); */
-        box-shadow: -1px -1px 2px 2px #bba17b;
-    }
 }
 
 @keyframes shaking {
