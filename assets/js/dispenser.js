@@ -94,6 +94,20 @@ class Dispenser{
         this.randomNumberOfMarblesInRow.push(totalMarbles)
         this.randomlyCreateRowColors(this.randomNumberOfMarblesInRow)
     }
+    getMarbleCountAtAllTimes(){
+        var totalMarbles = 0;
+        for(var start=0;start<5;start++){
+            totalMarbles += this.rows[start].marblesInRow.length;
+        }
+        return totalMarbles
+    }
+    getMarbleCountAtAllTimes(){
+        var totalMarbles = 0;
+        for(var start=0;start<5;start++){
+            totalMarbles += this.rows[start].marblesInRow.length;
+        }
+        return totalMarbles
+    }
     render(){
         this.domElements.dispenser = $("<div>",{
             'class': 'board'
