@@ -19,7 +19,6 @@ class Player{
         $(playIndex).append(potionNeedtoRender);
     }
     fillPotion(potion){
-        // debugger;
         var marblesArr = this.collectMarbles;
         var marbles = []; 
         var fill = false;
@@ -34,7 +33,6 @@ class Player{
                     break;
                 } 
             }
-            console.log(potion.initialPotion);
             if(fill === false){
                 marbles.push(marblesArr[MIndex]); 
             }
@@ -42,7 +40,6 @@ class Player{
         }
 
         if(potion.checkFilledStatus()){
-            debugger;
             this.generatePotion();
             potion.dom.hide('slow');
             for(var index in this.oldMarbles){
@@ -52,7 +49,7 @@ class Player{
             this.score++
         }
         this.callBack.checkWin(this.score);
-        this.callBack.returnMarbles(marbles); //the leftover marbles
+        this.callBack.returnMarbles(marbles);
         this.callBack.changePlayer(potion);
     }
     getPotion(potion){

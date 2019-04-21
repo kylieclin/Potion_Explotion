@@ -14,7 +14,6 @@ class Marble{
         this.audio = new Audio('sound/bubbles.mp3')
     }
     handleClick(){
-        debugger;
         if(potionClicked){
             this.audio.play();
             $('.marble').toggleClass('marbleanima');
@@ -23,7 +22,6 @@ class Marble{
             potionClicked = false;
             this.callbacks.click(this); 
         }
-
     }
     getColor(){
         return this.marbleColor;
@@ -43,30 +41,8 @@ class Marble{
         });
 
         this.domElements.container.click( this.handleClick );
-
         this.domElements.container.append(this.domElements.marble );
 
         return this.domElements.container;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -116,24 +116,3 @@ class Dispenser{
         return this.domElements.dispenser;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
