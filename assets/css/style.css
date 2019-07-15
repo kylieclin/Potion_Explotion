@@ -1,0 +1,414 @@
+body {
+    margin:0;
+    font-family: 'Patua One', cursive;
+    font-size:0;
+}
+
+/* Gameboard */
+
+.game-page{
+    height:100vh;
+    width:100vw;
+}
+.game-area{
+    background-color:#db90b7;
+    height:65%;
+}
+.board-container{
+    position:relative;
+    height:100%;
+    width:60%;
+    display:inline-block;
+    background-color:#db90b7;
+    background-image: url('../../image/wooden.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    border-left: 5px solid #db90b7;
+    box-sizing: border-box;
+}
+.action-container{
+    width:40%;
+    height:100%;
+    background-color:#db90b7;
+    background-image: url('../../image/collectbk.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.board{
+    position:relative;
+    left:10%;
+    top:2.5%;
+    height:95%;
+    width:80%;
+    display:flex;
+    flex-direction: column;
+}
+.board-row{
+    height:70%;
+    width:100%;
+    display:flex;
+    box-sizing: border-box;
+}
+.collector-box{
+    height: 65%;
+    width: 80%;
+    position: relative;
+    display: inline-block;
+    left: 10%;
+    border-radius: 10%;
+}
+.info{
+    font-size:1rem;
+    height:30%;
+    background-image: url('../../image/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 5%;
+}
+.collector{
+    height:70%;
+    position: relative;
+}
+#rulesButton{
+    background-color:rgb(29, 147, 59, 0.9);
+    border-radius: 5px;
+    border: none;
+    font-family: 'Patua One', cursive;
+    height:10%;
+    width:20%;
+    display:inline-block;
+    font-size:1.5rem;
+    color: #ccedda;
+    position: absolute;
+    right: 75%; 
+    top: 82%;
+}
+#rulesButton:hover{
+    background-color:rgb(29, 147, 59, 1);
+}
+#close{
+    position:absolute;
+    top:3px;
+    right:2px;
+    width:26px;
+    height:24px;
+    background-color: rgb(29, 147, 59, 0.9);
+    border-radius:100%;
+    border: 2px solid darkgreen;
+    box-shadow: 4px 4px 4px green;
+    font-weight: bold;
+    color: #ccedda;
+    vertical-align: middle;
+}
+.hide{
+    display: none;
+}
+
+/* Marbles */
+
+.marble-container{
+    width:11.11%;
+    box-sizing: border-box;
+}
+.marble {
+    position:relative;
+    top:5%;
+    left:5%;
+    height:50px;
+    background-color:white;
+    width:50px;
+    border-radius:50%;
+}
+.marble, .collectedMarbles{
+    background: radial-gradient(circle at 50% 0px, rgb(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
+}
+.collectedMarbles{
+    border-radius: 50px;
+    height:50px;
+    width: 50px;
+    display: inline-block;
+    margin: 1px;
+}
+.hidden{
+    display:'none'
+}
+
+/* Player's area */
+.board-body,.action-container{
+    display:inline-block;
+    vertical-align:top;
+}
+.player-area{
+    background-color:#c63d95;
+    height:35%;
+}
+.player0-container,.player1-container{
+    width:50%;
+    height:100%;
+    display:inline-block;
+    border: 5px solid #db90b7;
+    box-sizing: border-box;
+}
+.player0-has,.player1-has{
+    width:50%;
+    position: relative;
+    height:100%;
+    display:inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    background-image: url('../../image/potion.png');
+    background-size: 19vh;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+}
+.player1-has{
+    background-position-x: 100%;
+}
+.potionContainer0, .potionContainer1{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 58%;
+    height:80%;
+    border-radius: 150px;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+.potionContainer0:hover, .potionContainer1:hover, .marble:hover{
+    animation: shaking 400ms infinite;
+    -webkit-animation: shaking 400ms infinite;
+}
+.potionslot{
+    padding-top: 10px;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    display: inline-block;
+    font-size: 3vh;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: relative;
+    text-align: center;   
+}
+.slotsText{
+    width: 15%;
+    text-align: center;
+    color: rgb(255, 248, 248);
+    font-size: 3vh;
+    position: relative;
+    display: inline-block;
+    margin: auto;
+}
+.score{
+    width:50%;
+    height:100%;
+    display:inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.scoreA{
+    background-position-x: 5%;
+    background-position-y: 100%;
+}
+.scoreB{
+    background-position-x: 95%;
+    background-position-y: 100%;
+}
+.playerName{
+    height:20%;
+    width:100%;
+    display:inline-block;
+    font-size:1.5rem;
+    text-align: center;
+    color: #ccedda;
+    position: relative;
+}
+.guideBox0, .guideBox1{
+    visibility: visible;
+    width:90%;
+    height: 20%;
+    background:  radial-gradient( circle at 10% 0px, rgb(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
+    text-align: center;
+    animation: colorchange 5s infinite;
+    -webkit-animation: colorchange 5s infinite;
+    border-radius: 10px;
+    position: relative;
+    left: 5%;
+}
+.guideBox0, .guideBox1, .potionContainer0, .potionContainer1,.badgeimg, .popupContainer, .modal, .reset-button, #rulesButton{
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+}
+.badgeimg{
+    width:98%;
+    height: 55%;
+    padding-top: 8%;
+    margin: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid rgb(231, 178, 5);
+    background-color: rgb(165, 87, 42);
+    background:  radial-gradient( to right at 10% 0px, rgb(165, 87, 42), rgba(255, 255, 255, 0) 58%);
+}
+.playerText0 , .playerText1 {
+    width: 100%;
+    height: 100%;
+    font-size: 2.8vh;
+    text-align: center;
+    color: rgba(11, 43, 19, 0.9);
+    margin: auto;
+    position: relative;
+    top: 20%;
+}
+.playing{
+    background-color: rgb(29, 147, 59);
+}
+.potionContainer, .marbleanima{
+    animation: pickme 2s infinite;
+    -webkit-animation: pickme 2s infinite;
+}
+
+/* Rules modal */
+.popupContent h2{
+    margin-top: -18px;
+    text-align: center;
+    font-size: 2.5vh
+}
+h2>p{
+    margin-top:7px;
+    text-align: center;
+    color: burlywood; 
+    font-size: 2vh;
+}
+h1{
+    text-align: center;
+    font-size: 2.5vh;
+    margin-top: -7px;
+}
+h1>p{
+    color: maroon;
+    font-size: 2vh;
+    color: burlywood;
+    margin-top: 8px;
+    text-align: left;
+}
+.popupContainer{
+    height:100%;
+    width:100%;
+    word-wrap: break-word;
+    font-size:1rem;
+    color: #ccedda;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-color: green;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: justify;
+    z-index: 1;
+}
+.popupContent{
+    font-size:1rem;
+    word-wrap: break-word;
+    color: #ccedda;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    position:absolute;
+    top:5%;
+    bottom:5%;
+    right:5%;
+    margin: -1% auto;
+    padding: 17px;
+}
+
+/* Win modal css */
+.modal{
+    height:60%;
+    width:60%;
+    font-size:25px;
+    background-image: url('../../image/winimg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position-y: 40%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center; 
+    border-radius: 5px;
+}
+.modaltext{
+    font-size: 3rem;
+    color: rgb(29, 147, 59);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.reset-button{
+    height: 10%;
+    width: 20%;
+    font-size: 2rem;
+    color: white;
+    font-family: 'Patua One', cursive;
+    background-color: rgb(29, 147, 59);
+    border: 1px solid #c63d95;
+    border-radius: 5px;
+}
+.divforposition{
+    height: 70%;
+    width: 80%;
+}
+
+@keyframes colorchange
+{
+  0%  {background-color: rgb(226, 53, 88);}
+  15% {background-color: Gold;}
+  30% {background-color: rgb(78, 162, 247);}
+  50% { background-color:  #cc62a7}
+  70% {background-color: rgb(78, 162, 247);}
+  85% {background-color: Gold;}
+  100%  {background-color: rgb(226, 53, 88);}
+}
+
+@keyframes pickme {
+    0%{box-shadow: -1px -1px 2px 2px #bba17b;}
+    50%{box-shadow: -1px -1px 2px 2px #7e5416;}
+    100%{box-shadow: -1px -1px 2px 2px #bba17b;}
+}
+
+@keyframes shaking {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media screen and (  max-width : 800px ){
+    .action-container{
+       display : none;
+    }
+    .board-container{
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    .playerText{
+        font-size: 1.8vh;
+    }
+    .marble{
+        width: 25px;
+        height: 25px;
+    }
+
+    .player1-container,.player0-container{
+        width: 100%;
+    }
+}
