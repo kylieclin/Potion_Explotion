@@ -45,6 +45,3 @@ function startApp(){
 function showHideModal(){
     $('.popupContainer').toggleClass('hide');
 }
-
-
-

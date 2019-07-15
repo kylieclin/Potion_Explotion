@@ -7,7 +7,6 @@ class Game{
         this.totalRows = null;
         this.players = [];
         this.playing = null;
-        this.audio = new Audio('sound/clap.mp3');
 //================== BIND ==================//
         this.reset = this.reset.bind(this);
         this.checkWin = this.checkWin.bind(this);
@@ -33,20 +32,16 @@ class Game{
         }
     }
     passCollectMarbles(player){
-        debugger;
         if(player === this.playing){
             potionClicked= true;
             marbleClicked = false;
             return this.dispenser.collectedMarbles;
-        } else {
-            console.log('its not your turn!');
         }
     }
     returnMarbles(marbles){
         this.dispenser.returnMarblesToRow(marbles);
     }
     createGameBoard(){
-        debugger;
         this.dispenser = new Dispenser(5, this.domForCollectMarbles);
         $(this.domSelectors.gameBoard).append(this.dispenser.render());
         this.dispenser.determineMarblesInRowAmount();
@@ -66,9 +61,12 @@ class Game{
     }
     checkWin(score){
         if(score === this.data.winGame){
+            if(this.playing === 0){
+               $('.modaltext').text('Player A Win');
+            } else {
+              $('.modaltext').text('Player B Win')  
+            }
             $('#modal').toggleClass('hide');
-            this.audio.play();
-            console.log('win');
         }
     }
     changePlayer(potion){
@@ -94,7 +92,6 @@ class Game{
         $(this.domSelectors.collectBox).empty();
     }
     selectPlay(){
-        debugger;
         var nextplayer = Math.floor(Math.random()*this.data.player);
         if(nextplayer === 0){
             $(this.domSelectors.player0.container).fadeTo('slow', '0.5').toggleClass(this.domSelectors.playing);
@@ -107,7 +104,6 @@ class Game{
         }
     }
     domForCollectMarbles(){
-        debugger;
         var marblesArr = this.dispenser.collectedMarbles;
         for(var colorIndex = 0 ; colorIndex < marblesArr.length; colorIndex++){
             var colorDiv = $('<div>',{
@@ -127,10 +123,3 @@ class Game{
         $('#modal').toggleClass('hide');
     }
 }
-
-
-
-
-
-
-
